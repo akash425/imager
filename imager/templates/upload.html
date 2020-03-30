@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Upload</h2>
+    <form action="add" method="POST">
+
+        {% csrf_token %}
+        enter 1st No: <input type="text" name="a"><br>
+        enter 2nd No: <input type="text" name="b"><br>
+        <input type="submit">
+    </form>
+{% endblock %}
