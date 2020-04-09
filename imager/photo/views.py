@@ -7,6 +7,7 @@ from django.views import View
 from django.views.generic import ListView, UpdateView
 
 from .forms import upload
+from .models import input1
 
 # Create your views here.
 class input(View):
@@ -20,8 +21,13 @@ class input(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            #opration_type = form.cleaned_data["opration_type"]
+            #del form.changed_data[opration_type]
+            Image = form.cleaned_data('input1')
+            Image.save(commit=True)
+            return redirect(self.template_name)
             #return redirect(self.success_url)
+            #return HttpResponseRedirect(self.get_success_url())
 
         return render(request, self.template_name, {"form": form})
 

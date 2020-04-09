@@ -6,6 +6,6 @@ from django.conf import settings
 
 # Create your models here.
 
-class input(models.Model):
-    input_file = models.ImageField(upload_to = 'media/input1/')
+class input1(models.Model):
+    input_file = models.ImageField(upload_to = 'media/input1/', blank=True, null=True)
     #name = models.CharField(max_length=50)
