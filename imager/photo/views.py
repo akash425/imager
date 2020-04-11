@@ -21,11 +21,13 @@ class input(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
+            image1=input1()
+            #image1=input1(**)
             #opration_type = form.cleaned_data["opration_type"]
             #del form.changed_data[opration_type]
-            Image = form.cleaned_data('input1')
-            Image.save(commit=True)
-            return redirect(self.template_name)
+            image1.input_file = form.cleaned_data['input_image']
+            image1.save()
+            return render(request,self.template_name)
             #return redirect(self.success_url)
             #return HttpResponseRedirect(self.get_success_url())
 
